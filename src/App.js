@@ -1,4 +1,4 @@
-import { Box, Typography, Card, CardContent, Button, Tooltip, List, ListItem, ListItemButton, ListItemText } from '@mui/material'
+import { Box, Typography, Button, Tooltip, List, ListItem, ListItemButton, ListItemText } from '@mui/material'
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
 import React, { useState } from 'react'
 import { useLoader } from '@react-three/fiber'
@@ -49,7 +49,7 @@ function App(props) {
 
   const objLeft = useLoader(OBJLoader, "/assets/pole_down_scaled_left.obj");
   const objRight = useLoader(OBJLoader, "/assets/pole_down_scaled_right.obj");
-  const { window, children, Component, pageProps } = props;
+  const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -59,7 +59,6 @@ function App(props) {
   const [leftForceData, setLeftForceData] = useState({ count: [0], data: [0] });
   let currentdateRoot = new Date();
   let currentDayMillisecondsRoot = (parseInt(currentdateRoot.getHours()) * 3600000) + (parseInt(currentdateRoot.getMinutes()) * 60000) + (parseInt(currentdateRoot.getSeconds()) * 1000) + (parseInt(currentdateRoot.getMilliseconds()))
-  const [leftHeartBeatData, setleftHeartBeatData] = useState([[currentDayMillisecondsRoot, 0]]);
   const [leftHeartBPMData, setLeftHeartBPMData] = useState({ time: [currentDayMillisecondsRoot], bpm: [0] });
   let leftPositionalDataSet = { count: [0], data: [0] }
   const leftPositionalDataSetMaxLen = 20
@@ -158,22 +157,24 @@ function App(props) {
   const container = window !== undefined ? () => window().document.body : undefined;
 
   const viewSwitch = () => {
+    let showContent=(<></>)
     switch (currentView) {
       case DASHBOARD_CONTENT:
-        return (<DashBoard objLeft={objLeft} objRight={objRight} leftQuaternionData={leftQuaternionData} rightQuaternionData={rightQuaternionData} leftForceData={leftForceData} rightForceData={rightForceData} leftHeartBPMData={leftHeartBPMData} />)
+        showContent= (<DashBoard objLeft={objLeft} objRight={objRight} leftQuaternionData={leftQuaternionData} rightQuaternionData={rightQuaternionData} leftForceData={leftForceData} rightForceData={rightForceData} leftHeartBPMData={leftHeartBPMData} />)
         break;
       case HEART_CONTENT:
-        return (<HeartPage leftHeartBeatData={leftHeartBeatData} leftHeartBPMData={leftHeartBPMData} />)
+        showContent=  (<HeartPage leftHeartBeatData={leftHeartBeatData} leftHeartBPMData={leftHeartBPMData} />)
         break;
       case POSITION_CONTENT:
-        return (<PositionPage objLeft={objLeft} objRight={objRight} leftQuaternionData={leftQuaternionData} rightQuaternionData={rightQuaternionData} leftPositionalData={leftPositionalData} rightPositionalData={rightPositionalData} />)
+        showContent=  (<PositionPage objLeft={objLeft} objRight={objRight} leftQuaternionData={leftQuaternionData} rightQuaternionData={rightQuaternionData} leftPositionalData={leftPositionalData} rightPositionalData={rightPositionalData} />)
         break;
       case FORCE_CONTENT:
-        return (<ForcePage leftForceData={leftForceData} rightForceData={rightForceData} />)
+        showContent=  (<ForcePage leftForceData={leftForceData} rightForceData={rightForceData} />)
         break;
       default:
-        return (<DashBoard objLeft={objLeft} objRight={objRight} leftQuaternionData={leftQuaternionData} rightQuaternionData={rightQuaternionData} leftForceData={leftForceData} rightForceData={rightForceData} leftHeartBPMData={leftHeartBPMData} />)
+        showContent=  (<DashBoard objLeft={objLeft} objRight={objRight} leftQuaternionData={leftQuaternionData} rightQuaternionData={rightQuaternionData} leftForceData={leftForceData} rightForceData={rightForceData} leftHeartBPMData={leftHeartBPMData} />)
     }
+    return showContent
   }
 
   const [currentView, setCurrentView] = useState(DASHBOARD_CONTENT);
