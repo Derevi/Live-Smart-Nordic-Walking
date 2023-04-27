@@ -257,53 +257,6 @@ function App(props) {
               '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
             }}
           >
-                      <Box sx={{ p: 3 }}>
-            </Box>
-            <List>
-              <ListItem key="DashBoard" >
-                <ListItemButton onClick={handleDashBoardContentClick} sx={{
-                  ":hover": {
-                    bgcolor: "#1f3a5a"
-                  }
-                }}>
-                  <NordicWalkingIcon color="disabled" />
-                  <ListItemText sx={{ pl: 1 }} primary="DashBoard" color="disabled" />
-                </ListItemButton >
-              </ListItem>
-              <ListItem key="Heart" >
-
-                <ListItemButton onClick={handleHeartContentClick} sx={{
-                  ":hover": {
-                    bgcolor: "#1f3a5a"
-                  }
-                }}>
-                  <FavoriteBorderIcon color="disabled" />
-                  <ListItemText sx={{ pl: 1 }} primary="Heart" color="disabled" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem key="Position" >
-                <ListItemButton onClick={handlePositionContentClick} sx={{
-                  ":hover": {
-                    bgcolor: "#1f3a5a"
-                  }
-                }}>
-                  <ThreeSixtyIcon color="disabled" />
-                  <ListItemText sx={{ pl: 1 }} primary="Position" color="disabled" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem key="Force"  >
-                <ListItemButton onClick={handleForceContentClick} sx={{
-                  ":hover": {
-                    bgcolor: "#1f3a5a"
-                  }
-                }}>
-                  <FitnessCenterIcon color="disabled" />
-                  <ListItemText sx={{ pl: 1 }} primary="Force" color="disabled" />
-                </ListItemButton>
-              </ListItem>
-            </List>
-          </Drawer>
-        </Box>
           </Drawer>
           <Drawer
             variant="permanent"
