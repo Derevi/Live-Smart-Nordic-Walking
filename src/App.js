@@ -163,7 +163,7 @@ function App(props) {
         showContent= (<DashBoard objLeft={objLeft} objRight={objRight} leftQuaternionData={leftQuaternionData} rightQuaternionData={rightQuaternionData} leftForceData={leftForceData} rightForceData={rightForceData} leftHeartBPMData={leftHeartBPMData} />)
         break;
       case HEART_CONTENT:
-        showContent=  (<HeartPage leftHeartBeatData={leftHeartBeatData} leftHeartBPMData={leftHeartBPMData} />)
+        showContent=  (<HeartPage leftHeartBPMData={leftHeartBPMData} />)
         break;
       case POSITION_CONTENT:
         showContent=  (<PositionPage objLeft={objLeft} objRight={objRight} leftQuaternionData={leftQuaternionData} rightQuaternionData={rightQuaternionData} leftPositionalData={leftPositionalData} rightPositionalData={rightPositionalData} />)
